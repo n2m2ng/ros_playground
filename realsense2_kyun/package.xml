@@ -1,0 +1,14 @@
+<package format="2">
+  <name>realsense2_kyun</name>
+  <version>1.2.4</version>
+  <description>
+  realsense2_kyun
+  </description>
+  <maintainer email="info@nm2.jp">n2m2ng</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>rospy</depend>
+</package>
