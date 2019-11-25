@@ -17,8 +17,7 @@
       <!-- Somehow topics here get prefixed by "$(arg camera)" when not inside an app namespace,
            so in this case "$(arg scan_topic)" must provide an absolute topic name (issue #88).
            Probably is a bug in the nodelet manager: https://github.com/ros/nodelet_core/issues/7 -->
-      <remap from="$(arg sensor_msgs)/image" to="$(arg camera)/$(arg depth)/image_rect_raw"/>
-      <remap from="$(arg sensor_msgs)/CameraInfo" to="$(arg camera)/$(arg depth)/camera_info"/>
+      <remap from="image" to="image_rect_raw"/>
     </node>
   </group>
 </launch>
