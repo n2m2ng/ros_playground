@@ -10,7 +10,7 @@
 <link name="base_link">
   <visual>
     <geometry>
-      <mesh filename="package://home/kyun/rosplayground/src/kyun_discription/mesh/servo01.stl"/>
+      <mesh filename="package://kyun_description/mesh/servo01.stl"/>
     </geometry>
   </visual>
 </link>
