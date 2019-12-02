@@ -3,7 +3,8 @@
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
   <rosparam file="$(find kyun_description)/config/manipulator.yaml" command="load"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+  <env name="GAZEBO_MODEL_PATH" value="$(find kyun_description)/models:$(optenv GAZEBO_MODEL_PATH)" />
 
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model kyun" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model kyun_model" />
   <node name="controller_spawner" pkg="controller_manager" type="spawner" args="manipulator_controller"/>
 </launch>
