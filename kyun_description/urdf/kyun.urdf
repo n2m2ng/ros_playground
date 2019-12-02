@@ -22,16 +22,24 @@
   </collision>
 </link>
 
-<gazebo reference="base_link">
-  <material>Gazebo/Red</material>
-</gazebo>
-
 <joint name="base_to_2nd" type="continuous">
   <parent link="base_link"/>
   <child link="2nd_link"/>
   <origin xyz="0 0 0" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
+  <dynamics damping="0.1"/>
 </joint>
+
+<transmission name="base_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_to_2nd">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="base_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
 
 <link name="2nd_link">
   <visual>
@@ -46,10 +54,6 @@
   </collision>
 </link>
 
-<gazebo reference="2nd_link">
-  <material>Gazebo/Red</material>
-</gazebo>
-
 <joint name="2nd_to_3rd" type="continuous">
   <parent link="2nd_link"/>
   <child link="3rd_link"/>
@@ -57,6 +61,17 @@
   <axis xyz="0 1 0"/>
   <dynamics damping="0.1"/>
 </joint>
+
+<transmission name="2nd_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="2nd_to_3rd">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="2nd_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
 
 <link name="3rd_link">
   <visual>
@@ -71,10 +86,6 @@
   </collision>
 </link>
 
-<gazebo reference="3rd_link">
-  <material>Gazebo/Red</material>
-</gazebo>
-
 <joint name="3rd_to_4th" type="continuous">
   <parent link="3rd_link"/>
   <child link="4th_link"/>
@@ -82,6 +93,17 @@
   <axis xyz="1 0 0"/>
   <dynamics damping="0.1"/>
 </joint>
+
+<transmission name="3rd_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="3rd_to_4th">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="3rd_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
 
 <link name="4th_link">
   <visual>
@@ -96,10 +118,6 @@
   </collision>
 </link>
 
-<gazebo reference="4th_link">
-  <material>Gazebo/Red</material>
-</gazebo>
-
 <joint name="4th_to_5th" type="continuous">
   <parent link="4th_link"/>
   <child link="5th_link"/>
@@ -107,6 +125,17 @@
   <axis xyz="0 1 0"/>
   <dynamics damping="0.1"/>
 </joint>
+
+<transmission name="4th_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="4th_to_5th">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="4th_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
 
 <link name="5th_link">
   <visual>
@@ -121,10 +150,6 @@
   </collision>
 </link>
 
-<gazebo reference="5th_link">
-  <material>Gazebo/Red</material>
-</gazebo>
-
 <joint name="5th_to_6th" type="continuous">
   <parent link="5th_link"/>
   <child link="6th_link"/>
@@ -132,6 +157,17 @@
   <axis xyz="1 0 0"/>
   <dynamics damping="0.1"/>
 </joint>
+
+<transmission name="5th_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="5th_to_6th">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="5th_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
 
 <link name="6th_link">
   <visual>
@@ -145,10 +181,6 @@
     </geometry>
   </collision>
 </link>
-
-<gazebo reference="6th_link">
-  <material>Gazebo/Red</material>
-</gazebo>
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
