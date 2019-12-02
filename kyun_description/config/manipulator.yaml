@@ -1,0 +1,9 @@
+manipulator_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - world_to_base
+    - base_to_2nd
+    - 2nd_to_3rd
+    - 3rd_to_4th
+    - 4th_to_5th
+    - 5th_to_6th
