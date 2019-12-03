@@ -1,7 +1,7 @@
 <launch>
   <param name="robot_description"
-    command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun_simple.urdf.xacro'"/>
+    command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/box.urdf.xacro'"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-    args="-param robot_description -urdf -model kyun_simple"/>
+    args="-param robot_description -urdf -model box"/>
 </launch>
