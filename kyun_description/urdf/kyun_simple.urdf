@@ -1,0 +1,45 @@
+<robot name="kyun" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<link name="world"/>
+<joint name="world_to_base" type="fixed">
+  <origin xyz="0 0 0"/>
+  <parent link="world"/>
+  <child link="base_link"/>
+</joint>
+
+<link name="base_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+      <origin xyz="0 0 0"/>
+    </geometry>
+  </visual>
+  <collision>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+      <origin xyz="0 0 0"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_to_2nd" type="continuous">
+  <parent link="base_link"/>
+  <child link="2nd_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <dynamics damping="0.1"/>
+</joint>
+
+<link name="2nd_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+</robot>

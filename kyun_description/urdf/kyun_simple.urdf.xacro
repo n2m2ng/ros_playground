@@ -1,0 +1,12 @@
+<robot name="test_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="side" value="0.5" />
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+        <origin xyz="0 0 0"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
