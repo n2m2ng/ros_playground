@@ -1,5 +1,13 @@
+<?xml version="1.0"?>
 <robot name="box" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="side" value="0.5" />
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
 
   <link name="base_link">
     <visual>
