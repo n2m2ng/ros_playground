@@ -2,28 +2,33 @@
 <robot name="box" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="side" value="0.5" />
 
-  <link name="world"/>
+  <link name="world">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
 
-  <joint name="fixed" type="fixed">
+
+  <joint name="world_to_base" type="fixed">
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
     <parent link="world"/>
     <child link="base_link"/>
   </joint>
 
   <link name="base_link">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0.25"/>
       <geometry>
         <box size="${side} ${side} ${side}" />
       </geometry>
-      <material name="red">
-        <color rgba="1.0 0.0 0.0 2.0"/>
-      </material>
     </visual>
     <collision>
       <geometry>
         <box size="${side} ${side} ${side}" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.6"/>
+      <inertia ixx="0.025" ixy="0" ixz="0" iyy="0.025" iyz="0" izz="0.025"/>
+    </inertial>
   </link>
 
   <gazebo>
