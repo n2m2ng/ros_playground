@@ -1,39 +1,15 @@
-<?xml version="1.0"?>
-<robot name="kyun_simple" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find kyun_description)/urdf/manipulator_parts.xacro"/>
-  <xacro:include filename="$(find kyun_description)/urdf/one_finger_gripper.xacro"/>
+<robot name="test_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="side" value="0.5" />
 
-  <material name="black">
-    <color rgba="0.2 0.2 0.2 1"/>
-  </material>
-  <material name="grey">
-    <color rgba="0.75 0.75 0.75 1"/>
-  </material>
-
-  <link name="world"/>
-
- <xacro:property name="end_effector_base_link" value="3rd_link"/>
-
-  <xacro:manipulator parent="world"
-       end_effector_link="${end_effector_base_link}"
-       link_colour_1="black"
-       link_colour_2="grey">
-    <origin xyz="0 0 0.0465" rpy="0 0 0"/>
-  </xacro:manipulator>
-
-  <xacro:if value="$(arg use_simulation)">
-    <xacro:include filename="$(find kyun_description)/urdf/manipulator_gazebo.xacro"/>
-
-      <xacro:basic_transmission joint_name="base_to_2nd"/>
-      <xacro:basic_transmission joint_name="2nd_to_3rd"/>
-
-    <gazebo>
-      <plugin name="control" filename="libgazebo_ros_control.so"/>
-      <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-        <jointName>shoulder_rotate_joint, shoulder_pitch_joint, upper_arm_link_joint, lower_arm_link_joint, moving_finger_joint</jointName>
-      </plugin>
-    </gazebo>
-  </xacro:if>
-
-
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="${side} ${side} ${side}" />
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 2.0"/>
+      </material>
+    </visual>
+  </link>
 </robot>
