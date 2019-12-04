@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="one_finger_gripper" params="base_link_name base_colour finger_colour">
+    <xacro:property name="PI" value="3.14159"/>
+  </xacro:macro>
+</robot>
