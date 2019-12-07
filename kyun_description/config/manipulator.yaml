@@ -1,5 +1,0 @@
-manipulator_controller:
-  type: "position_controllers/JointTrajectoryController"
-  joints:
-    - base_to_2nd
-    - 2nd_to_3rd

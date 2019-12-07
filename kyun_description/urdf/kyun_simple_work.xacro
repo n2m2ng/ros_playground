@@ -27,28 +27,86 @@
   </inertial>
 </link>
 
-<joint name="base_to_2nd" type="continuous">
+<joint name="base_to_second" type="continuous">
   <parent link="base_link"/>
-  <child link="2nd_link"/>
+  <child link="second_link"/>
   <origin xyz="0 0 0" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <dynamics damping="0.1"/>
+  <dynamics damping="0.7"/>
 </joint>
 
-<link name="2nd_link">
+<transmission name="base_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_to_second">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="base_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
+
+<link name="second_link">
   <visual>
     <geometry>
       <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+      <origin xyz="0 0 0"/>
     </geometry>
   </visual>
   <collision>
     <geometry>
       <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+      <origin xyz="0 0 0"/>
     </geometry>
   </collision>
   <inertial>
-    <mass value="0.6"/>
-    <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>
+    <mass value="0.0228"/>
+    <inertia ixx="0.012587" ixy="0" ixz="0" iyy="0.009052" iyz="0" izz="0.010677"/>
   </inertial>
 </link>
+
+<joint name="second_to_third" type="continuous">
+  <parent link="second_link"/>
+  <child link="third_link"/>
+  <origin xyz="-0.00963 0.019 0.05" rpy="0 0 0"/>
+  <axis xyz="0 1 0"/>
+  <dynamics damping="0.7"/>
+</joint>
+
+<transmission name="second_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="second_to_third">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="second_motor">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanismReduction>1</mechanismReduction>
+    </actuator>
+</transmission>
+
+<link name="third_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <geometry>
+      <mesh filename="package://kyun_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="0.0638"/>
+    <inertia ixx="0.021267" ixy="0" ixz="0" iyy="0.020277" iyz="0" izz="0.011317"/>
+  </inertial>
+</link>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/kyun_simple_work</robotNamespace>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    <legacyModeNS>true</legacyModeNS>
+  </plugin>
+</gazebo>
+
 </robot>
