@@ -2,7 +2,7 @@
   <param name="robot_description"
       command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun_simple_work.xacro'"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-  <rosparam file="$(find kyun_description)/config/controller.yaml" command="load"/>
+  <rosparam file="$(find kyun_description)/config/control.yaml" command="load"/>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
     args="-param robot_description -urdf -model kyun_simple_work"/>
