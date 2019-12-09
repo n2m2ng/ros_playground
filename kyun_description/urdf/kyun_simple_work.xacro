@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
-<robot name="kyun" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="kyun_simple_work" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<material name="gray">
+  <color rgba="0.5 0.5 0.5 2.5"/>
+</material>
+<material name="white">
+  <color rgba="1.0 1.0 1.0 1"/>
+</material>
 
 <link name="world"/>
 <joint name="world_to_base" type="fixed">
@@ -14,6 +21,7 @@
       <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0.0465"/>
     </geometry>
+    <material name="gray"/>
   </visual>
   <collision>
     <geometry>
@@ -27,13 +35,17 @@
   </inertial>
 </link>
 
+<gazebo reference="base_link">
+  <material>Gazebo/Grey</material>
+</gazebo>
+
 <joint name="base_to_2nd" type="revolute">
   <parent link="base_link"/>
   <child link="2nd_link"/>
   <origin xyz="0 0 0" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
   <dynamics damping="0.7"/>
-  <limit lower="-1.5" upper="1.5" effort="0" velocity="0"/>
+  <limit lower="-1.5" upper="1.5" effort="0.5" velocity="6.0"/>
 </joint>
 
 <transmission name="base_trans">
@@ -42,8 +54,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="base_motor">
-       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-       <mechanismReduction>1</mechanismReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
 
@@ -53,6 +65,7 @@
       <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
+    <material name="grey"/>
   </visual>
   <collision>
     <geometry>
@@ -66,13 +79,17 @@
   </inertial>
 </link>
 
+<gazebo reference="2nd_link">
+  <material>Gazebo/Grey</material>
+</gazebo>
+
 <joint name="2nd_to_3rd" type="revolute">
   <parent link="2nd_link"/>
   <child link="3rd_link"/>
   <origin xyz="-0.00963 0.019 0.05" rpy="0 0 0"/>
   <axis xyz="0 1 0"/>
   <dynamics damping="0.7"/>
-  <limit lower="-1.5" upper="1.5" effort="0" velocity="0"/>
+  <limit lower="-1.5" upper="1.5" effort="0.5" velocity="6.0"/>
 </joint>
 
 <transmission name="2nd_trans">
@@ -81,8 +98,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="2nd_motor">
-       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-       <mechanismReduction>1</mechanismReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
 
@@ -92,6 +109,7 @@
       <mesh filename="package://kyun_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
+    <material name="grey"/>
   </visual>
   <collision>
     <geometry>
@@ -105,13 +123,17 @@
   </inertial>
 </link>
 
+<gazebo reference="3rd_link">
+  <material>Gazebo/Grey</material>
+</gazebo>
+
 <joint name="3rd_to_4th" type="revolute">
   <parent link="3rd_link"/>
   <child link="4th_link"/>
   <origin xyz="0.019 -0.018 0.06075" rpy="0 0 0"/>
   <axis xyz="1 0 0"/>
   <dynamics damping="0.7"/>
-  <limit lower="-1.5" upper="1.5" effort="0" velocity="0"/>
+  <limit lower="-1.5" upper="1.5" effort="0.5" velocity="6.0"/>
 </joint>
 
 <transmission name="3rd_trans">
@@ -120,8 +142,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="3rd_motor">
-       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-       <mechanismReduction>1</mechanismReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
 
@@ -130,6 +152,7 @@
     <geometry>
       <mesh filename="package://kyun_description/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
     </geometry>
+    <material name="grey"/>
   </visual>
   <collision>
     <geometry>
@@ -142,13 +165,17 @@
   </inertial>
 </link>
 
+<gazebo reference="4th_link">
+  <material>Gazebo/Grey</material>
+</gazebo>
+
 <joint name="4th_to_5th" type="revolute">
   <parent link="4th_link"/>
   <child link="5th_link"/>
   <origin xyz="-0.019 -0.02 0.024" rpy="0 0 0"/>
   <axis xyz="0 1 0"/>
   <dynamics damping="0.7"/>
-  <limit lower="-1.5" upper="1.5" effort="0" velocity="0"/>
+  <limit lower="-1.5" upper="1.5" effort="0.5" velocity="6.0"/>
 </joint>
 
 <transmission name="4th_trans">
@@ -157,8 +184,8 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="4th_motor">
-       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-       <mechanismReduction>1</mechanismReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
 
@@ -167,6 +194,7 @@
     <geometry>
       <mesh filename="package://kyun_description/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
     </geometry>
+    <material name="grey"/>
   </visual>
   <collision>
     <geometry>
@@ -179,13 +207,17 @@
   </inertial>
 </link>
 
+<gazebo reference="5th_link">
+  <material>Gazebo/Grey</material>
+</gazebo>
+
 <joint name="5th_to_6th" type="revolute">
   <parent link="5th_link"/>
   <child link="6th_link"/>
   <origin xyz="0.0205 0.02 0.06075" rpy="0 0 0"/>
   <axis xyz="1 0 0"/>
   <dynamics damping="0.7"/>
-  <limit lower="-1.5" upper="1.5" effort="0" velocity="0"/>
+  <limit lower="-1.5" upper="1.5" effort="0.5" velocity="6.0"/>
 </joint>
 
 <transmission name="5th_trans">
@@ -194,7 +226,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="5th_motor">
-       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
        <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -204,6 +236,7 @@
     <geometry>
       <mesh filename="package://kyun_description/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
     </geometry>
+    <material name="white"/>
   </visual>
   <collision>
     <geometry>
@@ -215,6 +248,10 @@
     <inertia ixx="0.0011416" ixy="0" ixz="0" iyy="0.0011103" iyz="0" izz="0.0020421"/>
   </inertial>
 </link>
+
+<gazebo reference="6th_link">
+  <material>Gazebo/white</material>
+</gazebo>
 
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

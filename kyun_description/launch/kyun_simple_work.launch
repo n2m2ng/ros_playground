@@ -1,6 +1,6 @@
 <launch>
   <param name="robot_description"
-    command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun_simple_work.xacro'"/>
+      command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun_simple_work.xacro'"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
   <rosparam file="$(find kyun_description)/config/controller.yaml" command="load"/>
 
