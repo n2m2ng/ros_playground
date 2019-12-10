@@ -1,9 +1,10 @@
 <launch>
-  <arg name="model" default="$(find kyun_description)/urdf/kyun.urdf"/>
+  <param name="robot_description"
+      command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun.xacro'"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'"/>
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-param robot_description -urdf -model kyun" />
+  <rosparam file="$(find kyun_description)/config/control.yaml" command="load"/>
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+    args="-param robot_description -urdf -model kyun"/>
   <include file="$(find kyun_description)/launch/control.launch"/>
-  <rosparam file="$(find kyun_description)/config/manipulator.yaml" command="load"/>
-  <env name="GAZEBO_MODEL_PATH" value="$(find kyun_description)/models:$(optenv GAZEBO_MODEL_PATH)" />
 </launch>

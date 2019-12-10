@@ -1,4 +1,4 @@
-kyun_simple_work:
+kyun:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
@@ -14,14 +14,14 @@ kyun_simple_work:
     joint: 2nd_to_3rd
     pid: {p: 100.0, i: 0.01, d: 10.0}
   joint3_position_controller:
-      type: effort_controllers/JointPositionController
-      joint: 3rd_to_4th
-      pid: {p: 100.0, i: 0.01, d: 10.0}
+    type: effort_controllers/JointPositionController
+    joint: 3rd_to_4th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
   joint4_position_controller:
-        type: effort_controllers/JointPositionController
-        joint: 4th_to_5th
-        pid: {p: 100.0, i: 0.01, d: 10.0}
+    type: effort_controllers/JointPositionController
+    joint: 4th_to_5th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
   joint5_position_controller:
-          type: effort_controllers/JointPositionController
-          joint: 5th_to_6th
-          pid: {p: 100.0, i: 0.01, d: 10.0}
+    type: effort_controllers/JointPositionController
+    joint: 5th_to_6th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
