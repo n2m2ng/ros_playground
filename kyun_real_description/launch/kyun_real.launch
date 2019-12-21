@@ -1,0 +1,54 @@
+<launch>
+
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find kyun_real_description)/urdf/kyun_real.xacro" />
+
+  <node name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py"
+    required="true" output="screen">
+    <rosparam file="$(find kyun_real_description)/config/servo_controller_manager.yaml"
+      command="load"/>
+  </node>
+
+  <rosparam file="$(find kyun_real_description)/config/servo_controllers.yaml"
+    command="load"/>
+  <node name="servo_controller_spawner"
+    pkg="dynamixel_controllers"
+    type="controller_spawner.py"
+    args="--manager=dynamixel_controller_manager
+          --port /dev/ttyUSB3
+          joint_state_controller
+          joint1_position_controller
+          joint2_position_controller
+          joint3_position_controller
+          joint4_position_controller
+          joint5_position_controller"
+    output="screen"/>
+
+  <rosparam file="$(find kyun_real_description)/config/arm_joint_trajectory_controller.yaml"
+    command="load"/>
+    <node name="joint_trajectory_controller_spawner"
+      pkg="dynamixel_controllers"
+      type="controller_spawner.py"
+      args="--manager=dynamixel_controller_manager
+            --type=meta
+            joint_state_controller
+            joint1_position_controller
+            joint2_position_controller
+            joint3_position_controller
+            joint4_position_controller
+            joint5_position_controller"
+      output="screen"/>
+
+  <node name="kyun_real_joint_state_publisher"
+    pkg="kyun_real_joint_state_publisher"
+    type="kyun_real_joint_state_publisher.py">
+      <rosparam file="$(find kyun_real_joint_state_publisher)/config/servo_controller_names.yaml"
+        command="load"/>
+  </node>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="kyun_real_description" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>
