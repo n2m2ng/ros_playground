@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>kyun_bringup</name>
+  <version>0.0.0</version>
+  <description>kyun bringup package</description>
+
+  <maintainer email="info@nm2.jp">n2m2ng</maintainer>
+
+  <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>crane_x7_moveit_config</build_depend>
+  <run_depend>crane_x7_moveit_config</run_depend>
+  <run_depend>moveit_commander</run_depend>
+
+   <export>
+
+  </export>
+</package>

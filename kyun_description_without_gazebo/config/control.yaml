@@ -1,0 +1,79 @@
+kyun:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+  world_to_base:
+    type: effort_controllers/JointPositionController
+    joint: base_to_2nd
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  base_to_2nd:
+    type: effort_controllers/JointPositionController
+    joint: 2nd_to_3rd
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  2nd_to_3rd:
+    type: effort_controllers/JointPositionController
+    joint: 3rd_to_4th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  3rd_to_4th:
+    type: effort_controllers/JointPositionController
+    joint: 4th_to_5th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  4th_to_5th:
+    type: effort_controllers/JointPositionController
+    joint: 5th_to_6th
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+joint_limits:
+  base_to_2nd:
+    has_position_limits: true
+    min_position: -1.5707963268
+    max_position: 1.5707963268
+    has_velocity_limits: true
+    max_velocity: 5.969211435
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0
+  2nd_to_3rd:
+    has_position_limits: true
+    min_position: -1.5707963268
+    max_position: 1.5
+    has_velocity_limits: true
+    max_velocity: 5.969211435
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0
+  3rd_to_4th:
+    has_position_limits: true
+    min_position: -0.2
+    max_position: 0.2
+    has_velocity_limits: true
+    max_velocity: 5.969211435
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0
+  4th_to_5th:
+    has_position_limits: true
+    min_position: -0.5
+    max_position: 0.5
+    has_velocity_limits: true
+    max_velocity: 5.969211435
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0
+  5th_to_6th:
+    has_position_limits: true
+    min_position: -0.2
+    max_position: 0.2
+    has_velocity_limits: true
+    max_velocity: 5.969211435
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0

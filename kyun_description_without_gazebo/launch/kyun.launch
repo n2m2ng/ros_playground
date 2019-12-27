@@ -1,0 +1,26 @@
+<launch>
+
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <param name="robot_description"
+      command="$(find xacro)/xacro --inorder '$(find kyun_description_without_gazebo)/urdf/kyun.xacro'"/>
+  <rosparam file="$(find kyun_description_without_gazebo)/config/control.yaml" command="load"/>
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+  output="screen" ns="/kyun"
+  args="base_to_2nd
+        2nd_to_3rd
+        3rd_to_4th
+        4th_to_5th
+        5th_to_6th"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+  respawn="false" output="screen">
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>

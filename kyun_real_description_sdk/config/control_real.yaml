@@ -1,17 +1,18 @@
 # Publish all joint states
 joint_state_controller:
-  type: "joint_state_controller/JointStateController"
+  type: "transmission_interface/SimpleTransmission"
   publish_rate: 250
 
 arm_controller:
-  type: "position_controllers/JointTrajectoryController"
+  type: "transmission_interface/SimpleTransmission"
   publish_rate: 250
   joints:
-    - joint1_position_controller
-    - joint2_position_controller
-    - joint3_position_controller
-    - joint4_position_controller
-    - joint5_position_controller
+    - world_to_base
+    - base_to_2nd
+    - 2nd_to_3rd
+    - 3rd_to_4th
+    - 4th_to_5th
+    - 5th_to_6th
 
   constraints:
     goal_time: 0.0
@@ -21,6 +22,7 @@ dynamixel_port:
   port_name: "/dev/ttyUSB3"
   baud_rate: 57600
   joints:
+    - world_to_base
     - base_to_2nd
     - 2nd_to_3rd
     - 3rd_to_4th

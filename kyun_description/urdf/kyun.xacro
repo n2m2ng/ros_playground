@@ -51,10 +51,10 @@
 <transmission name="base_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="base_to_2nd">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="base_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -95,10 +95,10 @@
 <transmission name="2nd_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="2nd_to_3rd">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="2nd_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -139,10 +139,10 @@
 <transmission name="3rd_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="3rd_to_4th">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="3rd_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -181,10 +181,10 @@
 <transmission name="4th_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="4th_to_5th">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="4th_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -223,10 +223,10 @@
 <transmission name="5th_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="5th_to_6th">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="5th_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
        <mechanismReduction>1</mechanismReduction>
     </actuator>
 </transmission>
@@ -260,5 +260,9 @@
     <legacyModeNS>true</legacyModeNS>
   </plugin>
 </gazebo>
-
+<gazebo>
+  <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+    <jointName>base_to_2nd, 2nd_to_3rd, 3rd_to_4th, 4th_to_5th, 5th_to_6th</jointName>
+  </plugin>
+</gazebo>
 </robot>

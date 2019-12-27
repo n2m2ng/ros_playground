@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="kyun_real" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="kyun" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <material name="gray">
   <color rgba="0.5 0.5 0.5 2.5"/>
@@ -18,14 +18,14 @@
 <link name="base_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0.0465"/>
     </geometry>
     <material name="gray"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0.0465"/>
     </geometry>
   </collision>
@@ -58,14 +58,14 @@
 <link name="2nd_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
     <material name="grey"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
   </collision>
@@ -98,14 +98,14 @@
 <link name="3rd_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
     <material name="grey"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_real_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
       <origin xyz="0 0 0"/>
     </geometry>
   </collision>
@@ -138,13 +138,13 @@
 <link name="4th_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="grey"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
   <inertial>
@@ -176,13 +176,13 @@
 <link name="5th_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="grey"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
   <inertial>
@@ -214,13 +214,13 @@
 <link name="6th_link">
   <visual>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="white"/>
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_real_description_sdk/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
   <inertial>

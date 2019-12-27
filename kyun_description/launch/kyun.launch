@@ -5,6 +5,6 @@
   <rosparam file="$(find kyun_description)/config/control.yaml" command="load"/>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-    args="-param robot_description -urdf -model kyun"/>
+    args="-param robot_description -urdf -model kyun" output="screen"/>
   <include file="$(find kyun_description)/launch/control.launch"/>
 </launch>

@@ -1,0 +1,14 @@
+<launch>
+
+<rosparam file="$(find kyun_description_moveit)/config/controller.yaml" command="load"/>
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" ns="/arm_controller"
+      args="arm_controller" />
+
+<!-- Convert /joint_states messages published by Gazebo to /tf messages,
+     e.g., for rviz-->
+<node name="robot_state_publisher" pkg="robot_state_publisher"
+      type="robot_state_publisher" output="screen" />
+
+</launch>
