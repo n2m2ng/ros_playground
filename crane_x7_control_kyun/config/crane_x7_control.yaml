@@ -7,11 +7,11 @@ arm_controller:
   type: "position_controllers/JointTrajectoryController"
   publish_rate: 250
   joints:
-    - base_to_2nd
-    - 2nd_to_3rd
-    - 3rd_to 4th
-    - 4th_to 5th
-    - 5th_to_6th
+    - base_to_second
+    - second_to_third
+    - third_to_fourth
+    - fourth_to_fifth
+    - fifth_to_sixth
   constraints:
     goal_time: 0.0
     stopped_velocity_tolerance: 1.0
@@ -20,64 +20,64 @@ dynamixel_port:
   port_name: "/dev/ttyUSB3"
   baud_rate: 57600
   joints:
-    - base_to_2nd
-    - 2nd_to_3rd
-    - 3rd_to_4th
-    - 4th_to_5th
-    - 5th_to_6th
-  base_to_2nd: {id: 3, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
-  2nd_to_3rd: {id: 4, center: 2048, home: 2048, effort_const: 2.79, mode: 3 }
-  3rd_to_4th: {id: 1, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
-  4th_to_5th: {id: 2, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
-  5th_to_6th: {id: 5, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+    - base_to_second
+    - second_to_third
+    - third_to_fourth
+    - fourth_to_fifth
+    - fifth_to_sixth
+  base_to_second: {id: 3, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  second_to_third: {id: 4, center: 2048, home: 2048, effort_const: 2.79, mode: 3 }
+  third_to_fourth: {id: 1, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  fourth_to_fifth: {id: 2, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  fifth_to_sixth: {id: 5, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
 
 joint_limits:
-  base_to_2nd:
+  base_to_second:
     has_position_limits: true
     min_position: 0
     max_position: 0.1
     has_velocity_limits: true
-    max_velocity: 5.969211435
+    max_velocity: 5
     has_acceleration_limits: false
     has_jerk_limits: false
     has_effort_limits: true
     max_effort: 4.0
-  2nd_to_3rd:
+  second_to_third:
+    has_position_limits: true
+    min_position: -0.1
+    max_position: 0
+    has_velocity_limits: true
+    max_velocity: 5
+    has_acceleration_limits: false
+    has_jerk_limits: false
+    has_effort_limits: true
+    max_effort: 4.0
+  third_to_fourth:
     has_position_limits: true
     min_position: 0
-    max_position: 0.5
+    max_position: 0.1
     has_velocity_limits: true
-    max_velocity: 5.969211435
+    max_velocity: 5
     has_acceleration_limits: false
     has_jerk_limits: false
     has_effort_limits: true
     max_effort: 4.0
-  3rd_to_4th:
-    has_position_limits: true
-    min_position: 0
-    max_position: 0.5
-    has_velocity_limits: true
-    max_velocity: 5.969211435
-    has_acceleration_limits: false
-    has_jerk_limits: false
-    has_effort_limits: true
-    max_effort: 4.0
-  4th_to_5th:
+  fourth_to_fifth:
     has_position_limits: true
     min_position: 0.0
-    max_position: 0.5
+    max_position: 0.1
     has_velocity_limits: true
-    max_velocity: 5.969211435
+    max_velocity: 5
     has_acceleration_limits: false
     has_jerk_limits: false
     has_effort_limits: true
     max_effort: 4.0
-  5th_to_6th:
+  fifth_to_sixth:
     has_position_limits: true
     min_position: 0
-    max_position: 0.5
+    max_position: 0.1
     has_velocity_limits: true
-    max_velocity: 5.969211435
+    max_velocity: 5
     has_acceleration_limits: false
     has_jerk_limits: false
     has_effort_limits: true

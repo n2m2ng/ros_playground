@@ -600,6 +600,7 @@ void DXLPORT_CONTROL::init_joint_params( ST_JOINT_PARAM &param, int table_id, in
     }
 }
 
+/*
 std::string DXLPORT_CONTROL::self_check( void )
 {
     std::string res_str = "[DYNAMIXEL PARAMETER SELF CHECK]\n";
@@ -671,6 +672,7 @@ std::string DXLPORT_CONTROL::self_check( void )
     }
     return res_str;
 }
+*/
 
 void DXLPORT_CONTROL::effort_limitter( void )
 {

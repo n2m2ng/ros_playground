@@ -1,8 +1,8 @@
 arm_controller:
   type: follow_joint_trajectory/JointTrajectoryController
   joints:
-    - base_to_2nd
-    - 2nd_to_3rd
-    - 3rd_to_4th
-    - 4th_to_5th
-    - 5th_to_6th
+    - base_to_second
+    - second_to_third
+    - third_to_fourth
+    - fourth_to_fifth
+    - fifth_to_sixth

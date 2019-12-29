@@ -256,8 +256,8 @@ int main( int argc, char* argv[] )
     uint32_t prev_tempCount = 0;
     bool read_temp_flg = false;
 
-    ROS_INFO( "%s", crane_x7.self_check().c_str() );
-    init_reconfigure( &crane_x7 );
+//    ROS_INFO( "%s", crane_x7.self_check().c_str() );
+//    init_reconfigure( &crane_x7 );
 
     crane_x7.set_watchdog_all( DXL_WATCHDOG_RESET_VALUE );
     crane_x7.startup_motion();
