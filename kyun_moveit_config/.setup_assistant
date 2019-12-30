@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kyun_description_moveit
+    relative_path: urdf/kyun.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/kyun.srdf
+  CONFIG:
+    author_name: n2m2ng
+    author_email: info@nm2.jp
+    generated_timestamp: 1577737702

@@ -25,7 +25,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/servo01.stl" scale="0.0009 0.0009 0.0009"/>
       <origin xyz="0 0 0.0465"/>
     </geometry>
   </collision>
@@ -69,7 +69,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/frame12.stl" scale="0.0009 0.0009 0.0009"/>
       <origin xyz="0 0 0"/>
     </geometry>
   </collision>
@@ -113,7 +113,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo02.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/servo02.stl" scale="0.0009 0.0009 0.0009"/>
       <origin xyz="0 0 0"/>
     </geometry>
   </collision>
@@ -156,7 +156,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo03.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/servo03.stl" scale="0.0009 0.0009 0.0009"/>
     </geometry>
   </collision>
   <inertial>
@@ -198,7 +198,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/servo04.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/servo04.stl" scale="0.0009 0.0009 0.0009"/>
     </geometry>
   </collision>
   <inertial>
@@ -240,7 +240,7 @@
   </visual>
   <collision>
     <geometry>
-      <mesh filename="package://kyun_description/mesh/frame13.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://kyun_description/mesh/frame13.stl" scale="0.0009 0.0009 0.0009"/>
     </geometry>
   </collision>
   <inertial>
