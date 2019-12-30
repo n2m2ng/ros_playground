@@ -2,35 +2,26 @@
   <!-- USB port name for dynamixel_port -->
   <arg name="port" default="/dev/ttyUSB3" />
 
-  <group ns="kyun">
   <param name="robot_description"
-  command="$(find xacro)/xacro --inorder '$(find kyun_description_moveit)/urdf/kyun.xacro'"
-  />
+  command="$(find xacro)/xacro --inorder '$(find kyun_description_moveit)/urdf/kyun.xacro'"/>
 
   <rosparam file="$(find crane_x7_control_kyun)/config/crane_x7_control.yaml" command="load"/>
   <param name="dynamixel_port/port_name" value="$(arg port)"/>
 
-    <node
+  <node
         name="controller_spawner"
         pkg="controller_manager"
         type="spawner" respawn="false"
         output="screen"
         args="joint_state_controller
               arm_controller"/>
-  </group>
 
-  <group ns="kyun">
-    <node name="kyun_controller" pkg="crane_x7_control_kyun" type="crane_x7_control_kyun"
-          output="screen" respawn="false"/>
-    <remap from="kyun/kyun_controller/base_to_2nd/dxl_position"
-             to="arm_controller/follow_joint_trajectory/base_to_2nd/feedback"/>
-  </group>
+  <node name="kyun_controller" pkg="crane_x7_control_kyun" type="crane_x7_control_kyun"
+        output="screen" respawn="false"/>
 
-  <group ns="kyun">
-    <node name="robot_state_publisher" pkg="robot_state_publisher"
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
           type="robot_state_publisher" respawn="false" output="screen">
       <remap from="/joint_states" to="/kyun/joint_states" />
     </node>
-  </group>
 
 </launch>
