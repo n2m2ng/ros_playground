@@ -11,8 +11,6 @@
       <param name="scan_height" value="10"/>
       <param name="output_frame_id" value="/$(arg camera)_depth_frame"/>
       <param name="range_min" value="0.45"/>
-      <remap from="$(arg camera)/$(arg depth)/image" to="$(arg camera)/$(arg depth)/image_rect_raw"/>
-      <remap from="scan" to="$(arg scan_topic)"/>
 
       <!-- Somehow topics here get prefixed by "$(arg camera)" when not inside an app namespace,
            so in this case "$(arg scan_topic)" must provide an absolute topic name (issue #88).
@@ -20,4 +18,7 @@
 
     </node>
   </group>
+
+    <include file="find realsense2_kyun)/launch/remap.launch"/>
+    
 </launch>
