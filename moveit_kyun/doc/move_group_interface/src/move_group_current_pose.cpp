@@ -115,12 +115,13 @@ int main(int argc, char** argv)
   // ^^^^^^^^^^^^^^^^^^^^^^^
   // We can plan a motion for this group to a desired pose for the
   // end-effector.
+  /*
   geometry_msgs::Pose target_pose1;
-  target_pose1.orientation.w = 0.593154;
-  target_pose1.position.x = -0.132331;
-  target_pose1.position.y = 0.042154;
-  target_pose1.position.z = 0.126253;
-  move_group.setPoseTarget(target_pose1);
+  target_pose1.orientation.w = 1.0;
+  target_pose1.position.x = 0.28;
+  target_pose1.position.y = -0.2;
+  target_pose1.position.z = 0.5;
+  move_group.setPoseTarget(target_pose1);*/
 
   //addkyun
 //  const geometry_msgs::PoseStamped basic = move_group.getPoseTarget("basic");
@@ -129,6 +130,14 @@ int main(int argc, char** argv)
 //  const geometry_msgs::PoseStamped current_pose = move_group.getCurrentPose();
 //  ROS_INFO_NAMED("tutorial", "Current pose: %s", current_pose.c_str());
 
+//addkyun
+  move_group.setEndEffectorLink("sixth_link");
+  geometry_msgs::PoseStamped current_pose =
+  move_group.getCurrentPose();
+  printf("orientation=%f x=%f y=%f z=%f", current_pose.pose.orientation.w, current_pose.pose.position.x, current_pose.pose.position.y, current_pose.pose.position.z);
+  return 0;
+
+/*
   // Now, we call the planner to compute the plan and visualize it.
   // Note that we are just planning, not asking move_group
   // to actually move the robot.
@@ -142,11 +151,13 @@ int main(int argc, char** argv)
   // ^^^^^^^^^^^^^^^^^
   // We can also visualize the plan as a line with markers in RViz.
   ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
-  visual_tools.publishAxisLabeled(target_pose1, "pose1");
+  //addkyun
+  visual_tools.publishAxisLabeled(current_pose.pose, "basic");
+
   visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
   visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
-  visual_tools.trigger();
-  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
+  visual_tools.trigger();*/
+/*  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
 
   // Moving to a pose goal
   // ^^^^^^^^^^^^^^^^^^^^^
@@ -170,7 +181,7 @@ int main(int argc, char** argv)
   //
   // To start, we'll create an pointer that references the current robot's state.
   // RobotState is the object that contains all the current position/velocity/acceleration data.
-  moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
+/*  moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
   //
   // Next get the current set of joint values for the group.
   std::vector<double> joint_group_positions;

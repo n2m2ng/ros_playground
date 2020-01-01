@@ -26,25 +26,18 @@
         <joint name="third_to_fourth" value="0" />
     </group_state>
     <group_state name="basic" group="arm_joints">
-        <joint name="base_to_second" value="0.1" />
+        <joint name="base_to_second" value="0.05" />
         <joint name="fifth_to_sixth" value="0.8" />
         <joint name="fourth_to_fifth" value="-1" />
         <joint name="second_to_third" value="-1" />
-        <joint name="third_to_fourth" value="-0.4" />
+        <joint name="third_to_fourth" value="-0.7" />
     </group_state>
-    <group_state name="limit_plus" group="arm_joints">
-        <joint name="base_to_second" value="0.1" />
-        <joint name="fifth_to_sixth" value="0.8" />
-        <joint name="fourth_to_fifth" value="1.5" />
-        <joint name="second_to_third" value="0.8" />
-        <joint name="third_to_fourth" value="0.4" />
-    </group_state>
-    <group_state name="limit_minus" group="arm_joints">
-        <joint name="base_to_second" value="0.1" />
+    <group_state name="runaway" group="arm_joints">
+        <joint name="base_to_second" value="-0.2" />
         <joint name="fifth_to_sixth" value="-0.8" />
-        <joint name="fourth_to_fifth" value="-1" />
+        <joint name="fourth_to_fifth" value="-0.3" />
         <joint name="second_to_third" value="-1.5" />
-        <joint name="third_to_fourth" value="-0.4" />
+        <joint name="third_to_fourth" value="0.7" />
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="fifth_link" reason="Never" />

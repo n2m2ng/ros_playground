@@ -25,10 +25,10 @@ dynamixel_port:
     - third_to_fourth
     - fourth_to_fifth
     - fifth_to_sixth
-  base_to_second: {id: 3, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
-  second_to_third: {id: 4, center: 2048, home: 2048, effort_const: 2.79, mode: 3 }
-  third_to_fourth: {id: 1, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
-  fourth_to_fifth: {id: 2, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  base_to_second: {id: 1, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  second_to_third: {id: 2, center: 2048, home: 2048, effort_const: 2.79, mode: 3 }
+  third_to_fourth: {id: 3, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
+  fourth_to_fifth: {id: 4, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
   fifth_to_sixth: {id: 5, center: 2048, home: 2048, effort_const: 1.79, mode: 3 }
 
 joint_limits:
