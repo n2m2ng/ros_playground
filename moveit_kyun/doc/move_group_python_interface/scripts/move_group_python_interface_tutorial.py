@@ -52,6 +52,7 @@ import geometry_msgs.msg
 from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
+from time import sleep
 ## END_SUB_TUTORIAL
 
 def all_close(goal, actual, tolerance):
@@ -146,70 +147,87 @@ class MoveGroupPythonIntefaceTutorial(object):
     self.group_names = group_names
 
   def go_to_joint_state(self):
+    try:
 
-    IRtrigger = False
+        IRtrigger = False
 
-    # Copy class variables to local variables to make the web tutorials more clear.
-    # In practice, you should use the class variables directly unless you have a good
-    # reason not to.
-    group = self.group
-
-    ## BEGIN_SUB_TUTORIAL plan_to_joint_state
-    ##
-    ## Planning to a Joint Goal
-    ## ^^^^^^^^^^^^^^^^^^^^^^^^
-    ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
-    ## thing we want to do is move it to a slightly better configuration.
-    # We can get the joint values from the group and adjust some of the values:
-    current_joints = group.get_current_joint_values()
-    basic = group.get_current_joint_values()
-    basic[0] = 0.05
-    basic[1] = -1
-    basic[2] = -0.7
-    basic[3] = -1
-    basic[4] = 0.8
-
-    # The go command can be called with joint values, poses, or without any
-    # parameters if you have already set the pose or joint target for the group
-    group.go(basic, wait=True)
-
-    # Calling ``stop()`` ensures that there is no residual movement
-    group.stop()
-
-    current_joints = self.group.get_current_joint_values()
-
-    print "============ Press `Enter` to set to true IRtrigger ..."
-    raw_input()
-    IRtrigger = True
-
-    if IRtrigger == True:
-
+        # Copy class variables to local variables to make the web tutorials more clear.
+        # In practice, you should use the class variables directly unless you have a good
+        # reason not to.
         group = self.group
 
+        ## BEGIN_SUB_TUTORIAL plan_to_joint_state
+        ##
+        ## Planning to a Joint Goal
+        ## ^^^^^^^^^^^^^^^^^^^^^^^^
+        ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
+        ## thing we want to do is move it to a slightly better configuration.
+        # We can get the joint values from the group and adjust some of the values:
         current_joints = group.get_current_joint_values()
-        runaway = group.get_current_joint_values()
-        runaway[0] = -0.2
-        runaway[1] = -1.5
-        runaway[2] = 0.7
-        runaway[3] = -0.3
-        runaway[4] = -0.8
+        basic = group.get_current_joint_values()
+        basic[0] = 0.05
+        basic[1] = -1
+        basic[2] = -0.7
+        basic[3] = -1
+        basic[4] = 0.8
 
         # The go command can be called with joint values, poses, or without any
         # parameters if you have already set the pose or joint target for the group
-        group.go(runaway, wait=True)
+        group.go(basic, wait=True)
 
         # Calling ``stop()`` ensures that there is no residual movement
         group.stop()
 
-        ## END_SUB_TUTORIAL
-        # For testing:
-        # Note that since this section of code will not be included in the tutorials
-        # we use the class variable rather than the copied state variable
         current_joints = self.group.get_current_joint_values()
-        return all_close(runaway, current_joints, 0.01)
 
-    else:
+        print "============ Press `Enter` to set to true IRtrigger ..."
+        raw_input()
+        IRtrigger = True
 
+        while IRtrigger == True:
+
+            group = self.group
+
+            current_joints = group.get_current_joint_values()
+            runaway = group.get_current_joint_values()
+            runaway[0] = -0.2
+            runaway[1] = -1.5
+            runaway[2] = 0.7
+            runaway[3] = -0.3
+            runaway[4] = -0.8
+
+            group.go(runaway, wait=True)
+
+            group.stop()
+
+            current_joints = self.group.get_current_joint_values()
+
+            print "start sleep"
+            sleep(4)
+
+            group = self.group
+
+            current_joints = group.get_current_joint_values()
+            basic = group.get_current_joint_values()
+            basic[0] = 0.05
+            basic[1] = -1
+            basic[2] = -0.7
+            basic[3] = -1
+            basic[4] = 0.8
+
+            group.go(basic, wait=True)
+
+            group.stop()
+
+            current_joints = self.group.get_current_joint_values()
+
+            IRtrigger = False
+
+            print "============ Press `Enter` to set to true IRtrigger ..."
+            raw_input()
+            IRtrigger = True
+
+    except KeyboardInterrupt:
         return all_close(basic, current_joints, 0.01)
 
   """
