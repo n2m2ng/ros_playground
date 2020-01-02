@@ -146,6 +146,9 @@ class MoveGroupPythonIntefaceTutorial(object):
     self.group_names = group_names
 
   def go_to_joint_state(self):
+
+    IRtrigger = False
+
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
@@ -159,27 +162,55 @@ class MoveGroupPythonIntefaceTutorial(object):
     ## thing we want to do is move it to a slightly better configuration.
     # We can get the joint values from the group and adjust some of the values:
     current_joints = group.get_current_joint_values()
-    joint_goal = group.get_current_joint_values()
-    joint_goal[0] = 0.05
-    joint_goal[1] = -1
-    joint_goal[2] = -0.7
-    joint_goal[3] = -1
-    joint_goal[4] = 0.8
+    basic = group.get_current_joint_values()
+    basic[0] = 0.05
+    basic[1] = -1
+    basic[2] = -0.7
+    basic[3] = -1
+    basic[4] = 0.8
 
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
-    group.go(joint_goal, wait=True)
+    group.go(basic, wait=True)
 
     # Calling ``stop()`` ensures that there is no residual movement
     group.stop()
 
-    ## END_SUB_TUTORIAL
-
-    # For testing:
-    # Note that since this section of code will not be included in the tutorials
-    # we use the class variable rather than the copied state variable
     current_joints = self.group.get_current_joint_values()
-    return all_close(joint_goal, current_joints, 0.01)
+
+    print "============ Press `Enter` to set to true IRtrigger ..."
+    raw_input()
+    IRtrigger = True
+
+    if IRtrigger == True:
+
+        group = self.group
+
+        current_joints = group.get_current_joint_values()
+        runaway = group.get_current_joint_values()
+        runaway[0] = -0.2
+        runaway[1] = -1.5
+        runaway[2] = 0.7
+        runaway[3] = -0.3
+        runaway[4] = -0.8
+
+        # The go command can be called with joint values, poses, or without any
+        # parameters if you have already set the pose or joint target for the group
+        group.go(runaway, wait=True)
+
+        # Calling ``stop()`` ensures that there is no residual movement
+        group.stop()
+
+        ## END_SUB_TUTORIAL
+        # For testing:
+        # Note that since this section of code will not be included in the tutorials
+        # we use the class variable rather than the copied state variable
+        current_joints = self.group.get_current_joint_values()
+        return all_close(runaway, current_joints, 0.01)
+
+    else:
+
+        return all_close(basic, current_joints, 0.01)
 
   """
   def go_to_pose_goal(self):
@@ -492,8 +523,6 @@ def main():
 
 if __name__ == '__main__':
   main()
-
->>> basic = ["0.05", "-1", "-0.7", "-1", "0.8"]
 
 ## BEGIN_TUTORIAL
 ## .. _moveit_commander:
