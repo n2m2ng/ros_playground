@@ -1,10 +1,15 @@
+
 <launch>
+
   <param name="robot_description"
-      command="$(find xacro)/xacro --inorder '$(find kyun_description)/urdf/kyun.xacro'"/>
+    command="$(find xacro)/xacro --inorder '$(find kyun_description_moveit)/urdf/kyun.xacro'"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
-  <rosparam file="$(find kyun_description)/config/control.yaml" command="load"/>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-    args="-param robot_description -urdf -model kyun" output="screen"/>
-  <include file="$(find kyun_description)/launch/control.launch"/>
+        args="-param robot_description -urdf -model kyun" output="screen"/>
+
+  <rosparam file="$(find kyun_description_moveit)/config/controller.yaml" command="load"/>
+
+  <include file="$(find kyun_description_moveit)/launch/controller.launch" />
+
 </launch>
