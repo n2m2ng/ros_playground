@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(kyun_description)
+project(kyun_description_moveit)
 
 find_package(catkin REQUIRED COMPONENTS
     rospy sensor_msgs std_msgs)

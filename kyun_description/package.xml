@@ -1,8 +1,8 @@
 <package format="2">
-  <name>kyun_description</name>
+  <name>kyun_description_moveit</name>
   <version>1.2.4</version>
   <description>
-  kyun_description
+  kyun_description_moveit
   </description>
   <maintainer email="info@nm2.jp">n2m2ng</maintainer>
   <license>BSD</license>
